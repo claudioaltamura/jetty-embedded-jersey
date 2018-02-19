@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-//TODO lombok nutzen
 @SuppressWarnings("serial")
 @XmlRootElement
 public class Hero implements Serializable {
@@ -13,6 +12,7 @@ public class Hero implements Serializable {
 	private String name;
 	private String realname;
 
+	//TODO Is this the only way to go with Jackson?
 	public Hero()
 	{
 	}
