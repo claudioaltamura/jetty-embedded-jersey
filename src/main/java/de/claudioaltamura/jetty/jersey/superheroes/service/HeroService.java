@@ -2,16 +2,15 @@ package de.claudioaltamura.jetty.jersey.superheroes.service;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import de.claudioaltamura.jetty.jersey.superheroes.model.Hero;
 
 public class HeroService {
 
-	private static Map<Integer, Hero> HEROES = new HashMap<>();
+	private static Map<Integer, Hero> HEROES = new ConcurrentHashMap<>();
 	static
 	{
 		HEROES.put(0, Hero.create(0, "Spidermen", "Peter Parker"));
@@ -29,16 +28,16 @@ public class HeroService {
 		return Collections.unmodifiableMap(HEROES).values();
 	}
 
-	public int add(Hero hero) {
-		//TODO Is the return type correct?
+	public int create(Hero hero) {
 		int id = INDEX.getAndIncrement();
+		//TODO create a new hero and copy the properties
 		hero.setId(id);
 		HEROES.putIfAbsent(id, hero);
-		
+
 		return id;
 	}
 
-	public boolean deleteById(int id) {
+	public boolean delete(int id) {
 		//TODO Is return type correct?
 		if(HEROES.containsKey(id)) {
 			Hero hero = HEROES.get(id);
@@ -47,6 +46,14 @@ public class HeroService {
 		} else {
 			return false;
 		}
+	}
+
+	public boolean exists(int id) {
+		return HEROES.containsKey(id);
+	}
+
+	public void update(Hero hero2Update) {
+		HEROES.put(hero2Update.getId(), hero2Update);
 	}
 
 }
