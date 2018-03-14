@@ -1,4 +1,4 @@
-package de.claudioaltamura.jetty.jersey.superheroes.v2;
+package de.claudioaltamura.jetty.jersey.superheroes.resource.v2;
 
 import javax.annotation.PostConstruct;
 import javax.ws.rs.Path;
@@ -6,7 +6,7 @@ import javax.ws.rs.Path;
 import org.apache.log4j.Logger;
 
 @Path("v2/heroes")
-public class HeroResource extends de.claudioaltamura.jetty.jersey.superheroes.v1.HeroResource {
+public class HeroResource extends de.claudioaltamura.jetty.jersey.superheroes.resource.v1.HeroResource {
 
 	private static final Logger LOG = Logger.getLogger(HeroResource.class);
 

@@ -6,9 +6,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
-import javax.enterprise.context.ApplicationScoped;
-
-import de.claudioaltamura.jetty.jersey.superheroes.model.Hero;
+import de.claudioaltamura.jetty.jersey.superheroes.entity.Hero;
 
 //@ApplicationScoped
 public class HeroService {

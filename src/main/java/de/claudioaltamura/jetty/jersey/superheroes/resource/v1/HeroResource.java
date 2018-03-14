@@ -1,9 +1,8 @@
-package de.claudioaltamura.jetty.jersey.superheroes.v1;
+package de.claudioaltamura.jetty.jersey.superheroes.resource.v1;
 
 import java.util.Collection;
 
 import javax.annotation.PostConstruct;
-import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -19,7 +18,7 @@ import javax.ws.rs.core.Response.Status;
 
 import org.apache.log4j.Logger;
 
-import de.claudioaltamura.jetty.jersey.superheroes.model.Hero;
+import de.claudioaltamura.jetty.jersey.superheroes.entity.Hero;
 import de.claudioaltamura.jetty.jersey.superheroes.service.HeroCreationException;
 import de.claudioaltamura.jetty.jersey.superheroes.service.HeroNotfoundException;
 import de.claudioaltamura.jetty.jersey.superheroes.service.HeroService;

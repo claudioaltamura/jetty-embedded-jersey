@@ -1,4 +1,4 @@
-package de.claudioaltamura.jetty.jersey.superheroes.model;
+package de.claudioaltamura.jetty.jersey.superheroes.entity;
 
 import java.io.Serializable;
 
