@@ -2,6 +2,8 @@ package de.claudioaltamura.jetty.jersey.superheroes;
 
 import java.net.URI;
 
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
 import javax.ws.rs.core.UriBuilder;
 
 import org.apache.log4j.Logger;
@@ -12,7 +14,8 @@ import org.glassfish.jersey.server.ResourceConfig;
 /**
  * Creates a superheroes app instance.
  */
-public class SuperHeroesApp {
+@ApplicationPath("/superheroes/api")
+public class SuperHeroesApp extends Application {
 
 	private static final Logger LOG = Logger.getLogger(SuperHeroesApp.class);
 
