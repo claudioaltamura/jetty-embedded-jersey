@@ -23,8 +23,8 @@ import org.glassfish.jersey.message.internal.ReaderWriter;
 /**
  * Logging Filter.
  * Adpated from @see <a href="https://github.com/sjkhullar/JerseyFilterLogging/blob/placecholder/JerseyFilterLogging/src/main/java/org/learn/CustomLoggingFilter.java/">Logging Filter</a>
- * @author caltamura
  *
+ * TODO Change Filter. Doing it in a 2.0 Style: https://stackoverflow.com/questions/33666406/logging-request-and-response-in-one-place-with-jax-rs
  */
 @Provider
 public class CustomLoggingFilter implements ContainerRequestFilter, ContainerResponseFilter {
