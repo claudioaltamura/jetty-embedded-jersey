@@ -14,7 +14,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 /**
  * Creates a superheroes app instance.
  */
-@ApplicationPath("/superheroes/api")
+//@ApplicationPath("/superheroes/api")
 public class SuperHeroesApp extends Application {
 
 	private static final Logger LOG = Logger.getLogger(SuperHeroesApp.class);
