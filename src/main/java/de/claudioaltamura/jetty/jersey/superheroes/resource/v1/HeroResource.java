@@ -3,6 +3,8 @@ package de.claudioaltamura.jetty.jersey.superheroes.resource.v1;
 import java.util.Collection;
 
 import javax.annotation.PostConstruct;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -71,7 +73,7 @@ public class HeroResource {
 	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response create(Hero hero) throws HeroCreationException {
+	public Response create(@Valid Hero hero) throws HeroCreationException {
 		LOG.info("create=" + hero);
 
 		Long id = heroService.create(hero);
@@ -88,7 +90,7 @@ public class HeroResource {
 	 */
 	@PUT
 	@Path("{id}")
-	public Response put(@PathParam("id") int id, Hero hero) throws HeroNotfoundException {
+	public Response put(@PathParam("id") int id, @Valid Hero hero) throws HeroNotfoundException {
 		LOG.info("replace=" + id);
 
 		heroService.update(hero);
@@ -106,7 +108,7 @@ public class HeroResource {
 	@PATCH
 	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response patch(@PathParam("id") int id, String realname) throws HeroNotfoundException {
+	public Response patch(@PathParam("id") int id,@NotNull String realname) throws HeroNotfoundException {
 		LOG.info("patch=" + id);
 
 		heroService.updateRealName(id, realname);
