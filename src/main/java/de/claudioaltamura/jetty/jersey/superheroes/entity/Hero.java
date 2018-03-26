@@ -2,6 +2,7 @@ package de.claudioaltamura.jetty.jersey.superheroes.entity;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @SuppressWarnings("serial")
@@ -9,7 +10,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Hero implements Serializable {
 
 	private long id;
+	@NotNull(message = "{hero.name.not_empty}")
 	private String name;
+	@NotNull(message = "{hero.realname.not_empty}")
 	private String realname;
 
 	//TODO Is this the only way to go with Jackson?
