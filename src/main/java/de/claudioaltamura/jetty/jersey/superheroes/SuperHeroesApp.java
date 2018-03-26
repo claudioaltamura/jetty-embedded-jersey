@@ -2,7 +2,6 @@ package de.claudioaltamura.jetty.jersey.superheroes;
 
 import java.net.URI;
 
-import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.UriBuilder;
 
@@ -26,7 +25,6 @@ public class SuperHeroesApp extends Application {
 		//TODO uri relative just CONTEXT_PATH
 		URI baseUri = UriBuilder.fromUri("http://localhost/" ).port(PORT).build();
 		ResourceConfig config = new SuperHeroesApplication();
-		config.packages("de.claudioaltamura.jetty.jersey");
 		Server jettyServer = JettyHttpContainerFactory.createServer(baseUri, config);
 		try {
 			jettyServer.start();
