@@ -1,9 +1,9 @@
 package de.claudioaltamura.jetty.jersey.superheroes.service;
 
 @SuppressWarnings("serial")
-public class HeroNotfoundException extends RuntimeException {
+public class HeroNotFoundException extends RuntimeException {
 
-	public HeroNotfoundException(String message) {
+	public HeroNotFoundException(String message) {
 		super(message);
 	}
 

@@ -1,3 +1,4 @@
+
 package de.claudioaltamura.jetty.jersey.superheroes.resource.v1;
 
 import java.util.Collection;
@@ -22,7 +23,7 @@ import org.apache.log4j.Logger;
 
 import de.claudioaltamura.jetty.jersey.superheroes.entity.Hero;
 import de.claudioaltamura.jetty.jersey.superheroes.service.HeroCreationException;
-import de.claudioaltamura.jetty.jersey.superheroes.service.HeroNotfoundException;
+import de.claudioaltamura.jetty.jersey.superheroes.service.HeroNotFoundException;
 import de.claudioaltamura.jetty.jersey.superheroes.service.HeroService;
 
 @Path("v1/heroes")
@@ -49,28 +50,16 @@ public class HeroResource {
 		return heroService.findAll();
 	}
 
-	/**
-	 * Finds a person by id.
-	 * @param id
-	 * @return http status ok with person or not found.
-	 * @throws HeroNotfoundException thrown when hero does not exists
-	 */
 	@GET
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response find(@PathParam("id") int id) throws HeroNotfoundException {
+	public Response find(@PathParam("id") int id) throws HeroNotFoundException {
 		LOG.info("find=" + id);
 		Hero hero = heroService.findById(id);
 
 		return Response.ok().entity(hero).build();
 	}
 
-	/**
-	 * Creates a hero.
-	 * @param hero hero
-	 * @return http status created and hero id.
-	 * @throws HeroCreationException 
-	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response create(@Valid Hero hero) throws HeroCreationException {
@@ -81,16 +70,9 @@ public class HeroResource {
 		return Response.status(Status.CREATED).entity(id).build();
 	}
 
-	/**
-	 * Replaces a hero.
-	 * @param id id
-	 * @param hero hero
-	 * @return http status ok or not found.
-	 * @throws HeroNotfoundException 
-	 */
 	@PUT
 	@Path("{id}")
-	public Response put(@PathParam("id") int id, @Valid Hero hero) throws HeroNotfoundException {
+	public Response put(@PathParam("id") int id, @Valid Hero hero) throws HeroNotFoundException {
 		LOG.info("replace=" + id);
 
 		heroService.update(hero);
@@ -98,17 +80,10 @@ public class HeroResource {
 		return Response.ok().build();
 	}
 
-	/**
-	 * Updates the real name of a hero. Partial update.
-	 * @param id id
-	 * @param realname real name
-	 * @return http status ok or not found
-	 * @throws HeroNotfoundException 
-	 */
 	@PATCH
 	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response patch(@PathParam("id") int id,@NotNull String realname) throws HeroNotfoundException {
+	public Response patch(@PathParam("id") int id,@NotNull String realname) throws HeroNotFoundException {
 		LOG.info("patch=" + id);
 
 		heroService.updateRealName(id, realname);
@@ -116,15 +91,9 @@ public class HeroResource {
 		return Response.ok().build();
 	}
 
-	/**
-	 * Deletes a hero.
-	 * @param id id
-	 * @return http status not conten or not found.
-	 * @throws HeroNotfoundException thrown when hero does not exists
-	 */
 	@DELETE
 	@Path("{id}")
-	public Response delete(@PathParam("id") int id) throws HeroNotfoundException {
+	public Response delete(@PathParam("id") int id) throws HeroNotFoundException {
 		LOG.info("delete=" + id);
 
 		heroService.delete(id);

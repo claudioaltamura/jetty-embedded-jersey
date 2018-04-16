@@ -14,20 +14,16 @@ public class Hero implements Serializable {
 	private String name;
 	@NotNull(message = "{hero.realname.not_empty}")
 	private String realname;
-
-	//TODO Is this the only way to go with Jackson?
-	public Hero()
-	{
-	}
-
-	public Hero(String name, String realname) {
-		this.name = name;
-		this.realname = realname;
-	}
-
-	public static Hero create(long id, String name, String realname) {
-		Hero hero = new Hero(name, realname);
+	@NotNull(message = "{hero.city.not_empty}")
+	private String city;
+	
+	public static Hero create(long id, String name, String realname, String city) {
+		Hero hero = new Hero();
 		hero.setId(id);
+		hero.setName(name);
+		hero.setRealname(realname);
+		hero.setCity(city);
+		
 		return hero;
 	}
 
@@ -47,6 +43,15 @@ public class Hero implements Serializable {
 		this.realname = realname;
 	}
 
+	public String getCity() {
+		return city;
+	}
+	
+	public void setCity(String city)
+	{
+		this.city = city;
+	}
+	
 	public long getId() {
 		return id;
 	}
@@ -59,6 +64,7 @@ public class Hero implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((city == null) ? 0 : city.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((realname == null) ? 0 : realname.hashCode());
@@ -74,6 +80,11 @@ public class Hero implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Hero other = (Hero) obj;
+		if (city == null) {
+			if (other.city != null)
+				return false;
+		} else if (!city.equals(other.city))
+			return false;
 		if (id != other.id)
 			return false;
 		if (name == null) {
@@ -91,7 +102,7 @@ public class Hero implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Hero [id=" + id + ", name=" + name + ", realname=" + realname + "]";
+		return "Hero [id=" + id + ", name=" + name + ", realname=" + realname + ", city=" + city + "]";
 	}
-
+	
 }
