@@ -21,13 +21,11 @@ public class HeroResource {
 
 	private static final Logger LOG = Logger.getLogger(HeroResource.class);
 
-//	@Inject
 	protected HeroService heroService;
 
 	@PostConstruct
 	public void init() {
 		LOG.debug(this.getClass().getSimpleName() + " initialized");
-//		// TODO Replace with CDI
 		heroService = new HeroService();
 	}
 
