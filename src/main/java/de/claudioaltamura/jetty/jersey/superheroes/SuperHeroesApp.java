@@ -13,20 +13,24 @@ import org.glassfish.jersey.server.ResourceConfig;
 /**
  * Creates a superheroes app instance.
  */
-//@ApplicationPath("/superheroes/api")
 public class SuperHeroesApp extends Application {
 
 	private static final Logger LOG = Logger.getLogger(SuperHeroesApp.class);
 
-	public static final String BASE_URI = "localhost";
+	public static final String HOST = "localhost";
 
 	public static final int PORT = 8080;
 
+	public static final URI BASE_URI = UriBuilder.fromUri("http://" + HOST + "/" ).port(PORT).build();
+	
 	public static Server startServer() {
-		//TODO uri relative just CONTEXT_PATH
-		URI baseUri = UriBuilder.fromUri("http://" + BASE_URI + "/" ).port(PORT).build();
 		ResourceConfig config = new SuperHeroesConfig();
-		Server jettyServer = JettyHttpContainerFactory.createServer(baseUri, config);
+		return SuperHeroesApp.startServer(config);
+	}
+	
+	public static Server startServer(ResourceConfig config) {
+		Server jettyServer = JettyHttpContainerFactory.createServer(SuperHeroesApp.BASE_URI, config);
+
 		try {
 			jettyServer.start();
 			jettyServer.join();
