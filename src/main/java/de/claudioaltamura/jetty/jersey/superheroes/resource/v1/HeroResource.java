@@ -42,7 +42,6 @@ public class HeroResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<Hero> findall() {
-		//TODO Change return type to Response ?
 		LOG.info("find all heroes");
 
 		return heroService.findAll();
@@ -51,15 +50,15 @@ public class HeroResource {
 	@GET
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response find(@PathParam("id") int id) throws HeroNotFoundException {
+	public Hero find(@PathParam("id") int id) throws HeroNotFoundException {
 		LOG.info("find=" + id);
-		Hero hero = heroService.findById(id);
 
-		return Response.ok().entity(hero).build();
+		return heroService.findById(id);
 	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response create(@Valid Hero hero) throws HeroCreationException {
 		LOG.info("create=" + hero);
 
@@ -80,7 +79,6 @@ public class HeroResource {
 
 	@PATCH
 	@Path("{id}")
-	@Consumes(MediaType.APPLICATION_JSON)
 	public Response patch(@PathParam("id") int id,@NotNull String realname) throws HeroNotFoundException {
 		LOG.info("patch=" + id);
 
