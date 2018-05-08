@@ -29,26 +29,28 @@ public class HeroResource {
 		heroService = new HeroService();
 	}
 
+	//TODO wrap message as json if query string is empty
     @GET
     @NotNull
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Hero> searchForCity(
             @NotBlank(message = "{search.string.empty}") @QueryParam("q") String searchValue) {
 		LOG.info("searchForCity=" + searchValue);
+		
 		return heroService.findByCity(searchValue);
     }
-    
-	//https://www.logicbig.com/tutorials/java-ee-tutorial/jax-rs/using-query-param.html
-	//TODO get example with filtering, sorting, searching
-	///filtering tickets?state=open
-	//sortring GET /tickets?sort=created_at,priority
-	//searching GET /employees?query=Paul
-	//HINT: Query Parameter example
-	//pagination /employees?offset=30&limit=15 # returns the employees 30 to 45
-	//Updates & creation should return a resource representation
 
-	//@QueryParam
-	//@PathParam
-	//@FormParam
-	
+    /*
+     * Other examples
+     * 
+     * as query param
+     * sorting v2/heroes/?sort=name
+     * pagination v2/heroes?offset=30&limit=15 #returns heroes 30 to 45
+     * 
+     * @DefaultValue is a really nice feature here.
+     * 
+     * as path param also possible.
+     * 
+     * and if you like a UriInfo is another alternative.
+     */
 }
