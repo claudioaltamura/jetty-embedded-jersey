@@ -2,7 +2,6 @@ package de.claudioaltamura.jetty.jersey.superheroes.resource.v1;
 
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import java.net.URI;
 
@@ -39,7 +38,7 @@ public class HeroResourceJerseyTest extends JerseyTest {
     }
 
     @Test
-    public void testAddContact() throws Exception {
+    public void testGetHero() throws Exception {
         final WebTarget target = target()
                 .path("v1/heroes/1");
         final Response response = target.request().get();

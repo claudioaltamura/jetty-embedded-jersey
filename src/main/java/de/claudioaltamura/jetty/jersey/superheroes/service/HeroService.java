@@ -15,9 +15,9 @@ public class HeroService {
 	private static Map<Long, Hero> HEROES = new ConcurrentHashMap<>();
 	static {
 		HEROES.put(1L, Hero.create(1, "Superman", "Kent Clark", "Metropolis"));
-		HEROES.put(1L, Hero.create(2, "Spiderman", "Peter Parker", "New York"));
-		HEROES.put(2L, Hero.create(3, "Batman", "Bruce Wa1yne", "Gotham City"));
-		HEROES.put(3L, Hero.create(4, "Batgirl", "Girl ???", "Gotham City"));
+		HEROES.put(2L, Hero.create(2, "Spiderman", "Peter Parker", "New York"));
+		HEROES.put(3L, Hero.create(3, "Batman", "Bruce Wa1yne", "Gotham City"));
+		HEROES.put(4L, Hero.create(4, "Batgirl", "Girl ???", "Gotham City"));
 	}
 
 	private static final AtomicLong INDEX = new AtomicLong(2);
