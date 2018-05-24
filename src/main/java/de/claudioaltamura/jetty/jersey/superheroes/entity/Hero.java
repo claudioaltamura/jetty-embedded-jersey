@@ -6,7 +6,6 @@ import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @SuppressWarnings("serial")
-@XmlRootElement
 public class Hero implements Serializable {
 
 	private long id;
