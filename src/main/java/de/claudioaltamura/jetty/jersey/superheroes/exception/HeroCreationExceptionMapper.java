@@ -9,8 +9,14 @@ public class HeroCreationExceptionMapper implements ExceptionMapper<HeroCreation
 
 	@Override
 	public Response toResponse(HeroCreationException exception) {
-		//TODO Add JSON Error Response
-		return Response.status(400).entity(exception.getMessage()).build();
+		int status = 400;//TODO status 
+		Errors errors = new Errors();
+		errors.add(new Errors.ErrorBuilder()
+				.status(status)
+				.detail(exception.getMessage())
+				.build());
+		//TODO https://stackoverflow.com/questions/18623667/serializing-array-with-jackson
+		return Response.status(status).entity(errors).build();
 	}
 
 }
