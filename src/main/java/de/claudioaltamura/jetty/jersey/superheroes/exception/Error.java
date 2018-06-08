@@ -16,7 +16,48 @@ public class Error implements Serializable {
 	private String title;
 	
 	private String detail;
+	
 
+	public static class ErrorBuilder {
+		
+		private int status;
+		
+		private String source;
+		
+		private String title;
+		
+		private String detail;
+	
+		public ErrorBuilder status(int status) {
+			this.status = status;
+			return this;
+		}
+		
+		public ErrorBuilder source(String source) {
+			this.source = source;
+			return this;
+		}
+		
+		public ErrorBuilder title(String title) {
+			this.title = title;
+			return this;
+		}
+		
+		public ErrorBuilder detail(String detail) {
+			this.detail = detail;
+			return this;
+		}
+		
+		public Error build() {
+			Error error = new Error();
+			error.setDetail(detail);
+			error.setSource(source);
+			error.setStatus(status);
+			error.setTitle(title);
+			return error;
+		}
+	}
+	
 	public int getStatus() {
 		return status;
 	}
@@ -53,4 +94,5 @@ public class Error implements Serializable {
 	public String toString() {
 		return "Error [status=" + status + ", source=" + source + ", title=" + title + ", detail=" + detail + "]";
 	}
+
 }
