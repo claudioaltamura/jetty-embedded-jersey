@@ -1,17 +1,12 @@
 package de.claudioaltamura.jetty.jersey.superheroes;
 
-import java.net.URI;
-
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.UriBuilder;
-
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.ServerProperties;
 
 import de.claudioaltamura.jetty.jersey.superheroes.exception.HeroCreationExceptionMapper;
 import de.claudioaltamura.jetty.jersey.superheroes.exception.HeroNotFoundExceptionMapper;
-
+import de.claudioaltamura.jetty.jersey.superheroes.exception.ValidationExceptionMapper;
 /**
  * Configures an JAX-RS Application.
  * 
@@ -29,6 +24,7 @@ public class SuperHeroesConfig extends ResourceConfig {
 		
 		register(HeroCreationExceptionMapper.class);
 		register(HeroNotFoundExceptionMapper.class);
+		register(ValidationExceptionMapper.class);
 	}
 	
 	
