@@ -25,8 +25,8 @@ public class SuperHeroesConfig extends ResourceConfig {
 		register(HeroCreationExceptionMapper.class);
 		register(HeroNotFoundExceptionMapper.class);
 		register(ValidationExceptionMapper.class);
+		
+		register(CustomRequestFilter.class);
 	}
 	
-	
-
 }
