@@ -1,0 +1,170 @@
+{
+	"variables": [],
+	"info": {
+		"name": "superheroes",
+		"_postman_id": "5c31ef5c-3f46-12d7-69ed-8b544f4f8821",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get all heroes",
+			"request": {
+				"url": "localhost:8080/v1/heroes",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get one hero",
+			"request": {
+				"url": "localhost:8080/v1/heroes/2",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get a hero, non existing",
+			"request": {
+				"url": "localhost:8080/v1/heroes/99",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "create a new hero, exception",
+			"request": {
+				"url": "localhost:8080/v1/heroes",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"Robin\",\"realname\":\"Tim Drake\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "create a new hero",
+			"request": {
+				"url": "localhost:8080/v1/heroes",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"Robin\",\"realname\":\"Tim Drake\",\"city\":\"Gotham City\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "update a hero",
+			"request": {
+				"url": "localhost:8080/v1/heroes/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"Robin\",\"realname\":\"Tim Drake\",\"city\":\"Gotham City\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "update city for an existing hero",
+			"request": {
+				"url": "localhost:8080/v1/heroes/2",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"realname\":\"Tim Drake!\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete a hero",
+			"request": {
+				"url": "localhost:8080/v1/heroes/2",
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "query all heroes from Gotham City",
+			"request": {
+				"url": "localhost:8080/v2/heroes?q=Gotham CIty",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "query all heroes, got an exception",
+			"request": {
+				"url": "localhost:8080/v2/heroes?q=",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
