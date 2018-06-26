@@ -72,7 +72,7 @@ public class HeroResource {
 	public Response put(@PathParam("id") int id, @Valid Hero hero) throws HeroNotFoundException {
 		LOG.info("replace=" + id);
 
-		heroService.update(hero);
+		heroService.update(id, hero);
 
 		return Response.ok().build();
 	}
@@ -98,3 +98,4 @@ public class HeroResource {
 	}
 
 }
+
