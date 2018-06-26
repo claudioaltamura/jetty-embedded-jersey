@@ -20,7 +20,7 @@ public class HeroService {
 		HEROES.put(4L, Hero.create(4, "Batgirl", "Girl ???", "Gotham City"));
 	}
 
-	private static final AtomicLong INDEX = new AtomicLong(2);
+	private static final AtomicLong INDEX = new AtomicLong(HEROES.size() + 1);
 
 	public Collection<Hero> findAll() {
 		return Collections.unmodifiableMap(HEROES).values();
@@ -30,10 +30,7 @@ public class HeroService {
 		long id = INDEX.getAndIncrement();
 		hero.setId(id);
 
-		Hero existingHero = HEROES.putIfAbsent(id, hero);
-		if (existingHero == null) {
-			throw new HeroCreationException("couldn't create hero=" + hero);
-		}
+		HEROES.put(id, hero);
 
 		return id;
 	}
@@ -46,12 +43,12 @@ public class HeroService {
 		return HEROES.get(id);
 	}
 
-	public void update(Hero hero2Update) throws HeroNotFoundException {
-		long id = hero2Update.getId();
+	public void update(int id, Hero hero2Update) throws HeroNotFoundException {
 		if (!exists(id)) {
 			throw new HeroNotFoundException("Hero=" + id + " not found");
 		}
 
+		hero2Update.setId(id);
 		HEROES.put(hero2Update.getId(), hero2Update);
 	}
 
