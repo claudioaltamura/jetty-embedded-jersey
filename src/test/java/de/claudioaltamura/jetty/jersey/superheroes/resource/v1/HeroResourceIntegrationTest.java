@@ -72,7 +72,7 @@ public class HeroResourceIntegrationTest extends JerseyTest {
 
 		assertEquals(500, response.getStatus());
 		final Error error = response.readEntity(Error.class);
-		assertEquals("[Real name is empty., City is empty.]", error.getDetail());
+		assertEquals("[City is empty., Real name is empty.]", error.getDetail());
 	}	
 
 	@Test

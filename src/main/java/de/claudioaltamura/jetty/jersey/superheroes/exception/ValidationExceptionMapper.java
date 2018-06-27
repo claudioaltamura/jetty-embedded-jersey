@@ -24,7 +24,7 @@ public class ValidationExceptionMapper implements ExceptionMapper<ConstraintViol
 		List<String> violationMessages = 
 				exception.getConstraintViolations()
 				.stream()
-				.map(this::getViolationMessage).collect(Collectors.toList());
+				.map(this::getViolationMessage).sorted().collect(Collectors.toList());
 		
 		Error error = new Error.ErrorBuilder()
 				.status(500)
