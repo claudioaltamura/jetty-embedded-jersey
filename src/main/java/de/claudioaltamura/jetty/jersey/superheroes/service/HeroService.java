@@ -18,8 +18,13 @@ public class HeroService {
 	static {
 		HEROES.put(1L, Hero.create(1, "Superman", "Kent Clark", "Metropolis"));
 		HEROES.put(2L, Hero.create(2, "Spiderman", "Peter Parker", "New York"));
-		HEROES.put(3L, Hero.create(3, "Batman", "Bruce Wa1yne", "Gotham City"));
-		HEROES.put(4L, Hero.create(4, "Batgirl", "Girl ???", "Gotham City"));
+		HEROES.put(3L, Hero.create(3, "Batman", "Bruce Wayne", "Gotham City"));
+		HEROES.put(4L, Hero.create(4, "Batgirl", "Barbara Gordon", "Gotham City"));
+		HEROES.put(5L, Hero.create(5, "Iron Man", "Anthony Edward", "New York"));
+		HEROES.put(6L, Hero.create(6, "Thor", "Thor Odinson", "Asgard"));
+		HEROES.put(7L, Hero.create(7, "Wolverine", "James Howlett", "Alberta"));
+		HEROES.put(8L, Hero.create(8, "Captain America", "Steve Rogers", "New York"));
+		HEROES.put(9L, Hero.create(9, "Hulk", "Robert Bruce Banner", "Dayton"));
 	}
 
 	public static final AtomicLong INDEX = new AtomicLong(HEROES.size() + 1);
