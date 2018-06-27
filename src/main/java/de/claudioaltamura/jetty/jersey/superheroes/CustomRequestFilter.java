@@ -50,9 +50,9 @@ public class CustomRequestFilter implements ContainerRequestFilter {
 				value = obj.get(0);
 			}
 			sb
-				.append("name")
+				.append("name ")
 				.append(name)
-				.append("value")
+				.append("value ")
 				.append(value)
 				.append(" ");
 		}
