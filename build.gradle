@@ -80,6 +80,12 @@ dependencies {
 
 }
 
+test {
+    filter {
+        //include all integration tests
+        includeTestsMatching "*IntegrationTest"
+    }
+}
 gretty {
     httpPort = 9091
     contextPath = '/'
