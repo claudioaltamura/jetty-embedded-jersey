@@ -8,11 +8,13 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import de.claudioaltamura.jetty.jersey.superheroes.entity.Hero;
 
 public class HeroService {
 
-	private static Map<Long, Hero> HEROES = new ConcurrentHashMap<>();
+	public static final Map<Long, Hero> HEROES = new ConcurrentHashMap<>();
 	static {
 		HEROES.put(1L, Hero.create(1, "Superman", "Kent Clark", "Metropolis"));
 		HEROES.put(2L, Hero.create(2, "Spiderman", "Peter Parker", "New York"));
@@ -20,22 +22,21 @@ public class HeroService {
 		HEROES.put(4L, Hero.create(4, "Batgirl", "Girl ???", "Gotham City"));
 	}
 
-	private static final AtomicLong INDEX = new AtomicLong(HEROES.size() + 1);
+	public static final AtomicLong INDEX = new AtomicLong(HEROES.size() + 1);
 
 	public Collection<Hero> findAll() {
 		return Collections.unmodifiableMap(HEROES).values();
 	}
 
-	public long create(Hero hero) throws HeroCreationException {
+	public long create(@Valid Hero hero){
 		long id = INDEX.getAndIncrement();
 		hero.setId(id);
-
 		HEROES.put(id, hero);
 
 		return id;
 	}
 
-	public Hero findById(long id) throws HeroNotFoundException {
+	public Hero findById(long id) {
 		if (!exists(id)) {
 			throw new HeroNotFoundException("Hero=" + id + " not found");
 		}
@@ -43,7 +44,7 @@ public class HeroService {
 		return HEROES.get(id);
 	}
 
-	public void update(int id, Hero hero2Update) throws HeroNotFoundException {
+	public void update(final int id, final Hero hero2Update) {
 		if (!exists(id)) {
 			throw new HeroNotFoundException("Hero=" + id + " not found");
 		}
@@ -52,7 +53,7 @@ public class HeroService {
 		HEROES.put(hero2Update.getId(), hero2Update);
 	}
 
-	public void updateRealName(long id, String realname) throws HeroNotFoundException {
+	public void updateRealName(final long id, final String realname) {
 		if (!exists(id)) {
 			throw new HeroNotFoundException("Hero=" + id + " not found");
 		}
@@ -61,7 +62,7 @@ public class HeroService {
 		hero2Updated.setRealname(realname);
 	}
 
-	public void delete(long id) throws HeroNotFoundException {
+	public void delete(long id) {
 		if (!exists(id)) {
 			throw new HeroNotFoundException("Hero=" + id + " not found");
 		}
@@ -75,7 +76,11 @@ public class HeroService {
 	}
 
 	public List<Hero> findByCity(String city) {
-		return HEROES.values().stream().filter(h -> city.equalsIgnoreCase(h.getCity())).collect(Collectors.toList());
+		return HEROES
+				.values()
+				.stream()
+				.filter(h -> city.equalsIgnoreCase(h.getCity()))
+				.collect(Collectors.toList());
 	}
 
 }

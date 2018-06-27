@@ -22,8 +22,6 @@ import javax.ws.rs.core.Response.Status;
 import org.apache.log4j.Logger;
 
 import de.claudioaltamura.jetty.jersey.superheroes.entity.Hero;
-import de.claudioaltamura.jetty.jersey.superheroes.service.HeroCreationException;
-import de.claudioaltamura.jetty.jersey.superheroes.service.HeroNotFoundException;
 import de.claudioaltamura.jetty.jersey.superheroes.service.HeroService;
 
 @Path("v1/heroes")
@@ -50,7 +48,7 @@ public class HeroResource {
 	@GET
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Hero find(@PathParam("id") int id) throws HeroNotFoundException {
+	public Hero find(@PathParam("id") int id) {
 		LOG.info("find=" + id);
 
 		return heroService.findById(id);
@@ -58,8 +56,7 @@ public class HeroResource {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response create(@Valid Hero hero) throws HeroCreationException {
+	public Response create(@Valid Hero hero) {
 		LOG.info("create=" + hero);
 
 		Long id = heroService.create(hero);
@@ -69,7 +66,8 @@ public class HeroResource {
 
 	@PUT
 	@Path("{id}")
-	public Response put(@PathParam("id") int id, @Valid Hero hero) throws HeroNotFoundException {
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response put(@PathParam("id") int id, @Valid Hero hero) {
 		LOG.info("replace=" + id);
 
 		heroService.update(id, hero);
@@ -79,7 +77,8 @@ public class HeroResource {
 
 	@PATCH
 	@Path("{id}")
-	public Response patch(@PathParam("id") int id,@NotNull String realname) throws HeroNotFoundException {
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response patch(@PathParam("id") int id,@NotNull String realname) {
 		LOG.info("patch=" + id);
 
 		heroService.updateRealName(id, realname);
@@ -89,7 +88,7 @@ public class HeroResource {
 
 	@DELETE
 	@Path("{id}")
-	public Response delete(@PathParam("id") int id) throws HeroNotFoundException {
+	public Response delete(@PathParam("id") int id) {
 		LOG.info("delete=" + id);
 
 		heroService.delete(id);

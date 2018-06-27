@@ -40,13 +40,13 @@ public class HeroResource {
     }
 
     /*
-     * Other examples
+     * Other possible examples
      * 
      * sorting v2/heroes/?sort=name&desc=name
      *
      * pagination v2/heroes?offset=30&limit=15 #returns heroes 30 to 45
      * @DefaultValue would be a really nice feature here.
      * 
-     * first, last, count
+     * first, last, count and so on ...
      */
 }
