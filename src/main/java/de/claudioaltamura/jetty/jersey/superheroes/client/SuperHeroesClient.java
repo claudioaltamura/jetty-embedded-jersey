@@ -11,7 +11,7 @@ import de.claudioaltamura.jetty.jersey.superheroes.entity.Hero;
 
 public class SuperHeroesClient {
 
-    private static final String URI = "http://localhost:8080/v1";;
+    private static final String URI = "http://localhost:8080/v1";
     
     private Client client = ClientBuilder.newClient();
 
