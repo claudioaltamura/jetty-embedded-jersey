@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'eclipse'
     id 'war'
+ 	id 'eclipse-wtp'
     id 'org.akhikhl.gretty' version '1.4.2'
 }
 
@@ -45,9 +46,6 @@ dependencies {
 
 	compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-jetty-http', version: jerseyVersion
 
-	//compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-jetty-servlet', version: jerseyVersion
-
-	//TODO ???
 	//Servlet
 	compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet', version: jerseyVersion
 
@@ -61,21 +59,6 @@ dependencies {
 	//Bean Validation
 	compile group: 'org.glassfish.jersey.ext', name: 'jersey-bean-validation', version: jerseyVersion
 
-	//CDI
-	//compile group: 'org.jboss.weld.servlet', name: 'weld-servlet-core', version: '2.4.6.Final'
-	//compile group: 'org.glassfish.jersey.ext.cdi', name: 'jersey-weld2-se', version: jerseyVersion
-
-	//compile group: 'org.jboss.weld', name: 'weld-core', version: '2.4.6.Final'
-
-	//TODO ???
-	//compile group: 'org.glassfish.jersey.ext.cdi', name: 'jersey-cdi1x', version: jerseyVersion
-	//TODO ???
-	//compile group: 'org.glassfish.jersey.ext.cdi', name: 'jersey-cdi1x-validation', version: jerseyVersion
-	//TODO ???
-	//compile group: 'org.glassfish.jersey.ext.cdi', name: 'jersey-cdi1x-ban-custom-hk2-binding', version: jerseyVersion
-
-	//compile group: 'org.glassfish.jersey.inject', name: 'jersey-cdi2-se', version: jerseyVersion
-
 	//JSON
 	compile group: 'org.glassfish.jersey.media', name: 'jersey-media-json-jackson', version: jerseyVersion
 
@@ -84,24 +67,17 @@ dependencies {
 
 	//Testing
 	testCompile "junit:junit:4.12"
-    //testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: "5.1.0"
-    //testCompile group: 'org.junit.platform', name: 'junit-platform-launcher', version: "1.1.0"
 
 	compile 'org.glassfish.jersey.inject:jersey-hk2:2.26'
 
-
 	testCompile group: 'org.glassfish.jersey.test-framework', name: 'jersey-test-framework-core', version: jerseyVersion
 
-	//TODO pom jersey-test-framework-provider-bundle
-	
-	//TODO ???
 	testCompile group: 'org.glassfish.jersey.test-framework.providers', name: 'jersey-test-framework-provider-external', version: jerseyVersion
 
 	testCompile group: 'org.glassfish.jersey.test-framework.providers', name: 'jersey-test-framework-provider-grizzly2', version: jerseyVersion
 
 	testCompile group: 'org.glassfish.jersey.test-framework', name: 'jersey-test-framework-util', version: jerseyVersion
 
-	//jersey-test-framework-provider-bundle
 }
 
 gretty {
