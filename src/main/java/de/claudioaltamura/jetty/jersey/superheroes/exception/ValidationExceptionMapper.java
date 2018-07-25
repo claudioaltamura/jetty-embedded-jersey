@@ -27,12 +27,12 @@ public class ValidationExceptionMapper implements ExceptionMapper<ConstraintViol
 				.map(this::getViolationMessage).sorted().collect(Collectors.toList());
 		
 		Error error = new Error.ErrorBuilder()
-				.status(500)
+				.status(400)
 				.detail(violationMessages.toString())
 				.build();
 		LOG.error(error);
 		
-		return Response.status(500).entity(error).build();		
+		return Response.status(400).entity(error).build();		
     }
 	
 	private String getViolationMessage(final ConstraintViolation<?> constraintViolation) {
