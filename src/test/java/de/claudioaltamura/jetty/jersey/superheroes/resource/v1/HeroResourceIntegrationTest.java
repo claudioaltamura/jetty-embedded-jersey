@@ -70,7 +70,7 @@ public class HeroResourceIntegrationTest extends JerseyTest {
 		final Response response = 
 				target.request(MediaType.APPLICATION_JSON).post(Entity.entity(hero, MediaType.APPLICATION_JSON));
 
-		assertEquals(500, response.getStatus());
+		assertEquals(400, response.getStatus());
 		final Error error = response.readEntity(Error.class);
 		assertEquals("[City is empty., Real name is empty.]", error.getDetail());
 	}	
